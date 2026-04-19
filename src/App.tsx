@@ -345,7 +345,7 @@ export default function App() {
           </div>
 
           <p className="mt-6 text-xs text-gray-600">
-            Hỗ trợ Windows 10 / 11 · 64-bit
+            Hỗ trợ Windows 10 / 11 (Chỉ dành cho phiên bản 64-bit)
           </p>
         </div>
       </section>
