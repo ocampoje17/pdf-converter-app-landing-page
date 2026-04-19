@@ -328,7 +328,9 @@ export default function App() {
           <div className="flex flex-wrap justify-center gap-4">
             <a
               id="main-download-btn"
-              href="#"
+              href="https://drive.google.com/drive/folders/1wZG0nqu64KsJoBZaMsAITPYd88iF-NJt?usp=sharing"
+              target="_blank"
+              rel="noreferrer"
               className="btn-download px-10 py-4 rounded-xl text-base font-semibold"
             >
               ⬇&nbsp;&nbsp;Tải về cho Windows
