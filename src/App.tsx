@@ -1,7 +1,11 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import AnimatedHeading from './components/AnimatedHeading'
 import FadeIn from './components/FadeIn'
 import './index.css'
+
+const VERSION_MANIFEST_URL = '/app-version.json'
+const FALLBACK_VERSION = '1.1.6'
+const DEFAULT_DOWNLOAD_URL = 'https://laychu.com'
 
 // ── Feature data ──────────────────────────────────────────────────────────────
 const features = [
@@ -51,6 +55,47 @@ function useScrollReveal() {
 export default function App() {
   useScrollReveal()
   const videoRef = useRef<HTMLVideoElement>(null)
+  const [latestVersion, setLatestVersion] = useState(FALLBACK_VERSION)
+  const [downloadUrl, setDownloadUrl] = useState(DEFAULT_DOWNLOAD_URL)
+
+  useEffect(() => {
+    const controller = new AbortController()
+
+    const loadVersionManifest = async () => {
+      try {
+        const response = await fetch(VERSION_MANIFEST_URL, {
+          signal: controller.signal,
+          cache: 'no-store',
+        })
+        if (!response.ok) {
+          return
+        }
+
+        const data = (await response.json()) as Record<string, unknown>
+        const remoteVersion = [data.latestVersion, data.version, data.appVersion]
+          .find((value): value is string => typeof value === 'string' && value.trim().length > 0)
+          ?.trim()
+        const remoteDownloadUrl = [data.downloadUrl, data.url, data.website]
+          .find((value): value is string => typeof value === 'string' && value.trim().length > 0)
+          ?.trim()
+
+        if (remoteVersion) {
+          setLatestVersion(remoteVersion)
+        }
+
+        if (remoteDownloadUrl) {
+          setDownloadUrl(remoteDownloadUrl)
+        }
+      } catch (error) {
+        if (error instanceof DOMException && error.name === 'AbortError') {
+          return
+        }
+      }
+    }
+
+    void loadVersionManifest()
+    return () => controller.abort()
+  }, [])
 
   return (
     <div className="min-h-screen bg-black text-white">
@@ -328,12 +373,12 @@ export default function App() {
           <div className="flex flex-wrap justify-center gap-4">
             <a
               id="main-download-btn"
-              href="https://drive.google.com/drive/folders/1wZG0nqu64KsJoBZaMsAITPYd88iF-NJt?usp=sharing"
+              href={downloadUrl}
               target="_blank"
               rel="noreferrer"
               className="btn-download px-10 py-4 rounded-xl text-base font-semibold"
             >
-              ⬇&nbsp;&nbsp;Tải về cho Windows
+              ⬇&nbsp;&nbsp;Tải về cho Windows (v{latestVersion})
             </a>
             <a
               id="github-link"
