@@ -42,6 +42,15 @@
     outline-color: rgba(0, 0, 0, 0.8);
   }
 
+  .footer-contact-link,
+  .footer-contact-link:visited {
+    color: #9ca3af;
+  }
+
+  .footer-contact-link:hover {
+    color: #fff;
+  }
+
   /* ── Liquid Glass ── */
   .liquid-glass {
     background: rgba(0, 0, 0, 0.4);

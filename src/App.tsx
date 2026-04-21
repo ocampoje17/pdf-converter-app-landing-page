@@ -5,7 +5,6 @@ import './index.css'
 
 const VERSION_MANIFEST_URL = '/app-version.json'
 const FALLBACK_VERSION = '1.1.6'
-const DEFAULT_DOWNLOAD_URL = 'https://laychu.com'
 
 // ── Feature data ──────────────────────────────────────────────────────────────
 const features = [
@@ -56,7 +55,6 @@ export default function App() {
   useScrollReveal()
   const videoRef = useRef<HTMLVideoElement>(null)
   const [latestVersion, setLatestVersion] = useState(FALLBACK_VERSION)
-  const [downloadUrl, setDownloadUrl] = useState(DEFAULT_DOWNLOAD_URL)
 
   useEffect(() => {
     const controller = new AbortController()
@@ -75,16 +73,8 @@ export default function App() {
         const remoteVersion = [data.latestVersion, data.version, data.appVersion]
           .find((value): value is string => typeof value === 'string' && value.trim().length > 0)
           ?.trim()
-        const remoteDownloadUrl = [data.downloadUrl, data.url, data.website]
-          .find((value): value is string => typeof value === 'string' && value.trim().length > 0)
-          ?.trim()
-
         if (remoteVersion) {
           setLatestVersion(remoteVersion)
-        }
-
-        if (remoteDownloadUrl) {
-          setDownloadUrl(remoteDownloadUrl)
         }
       } catch (error) {
         if (error instanceof DOMException && error.name === 'AbortError') {
@@ -373,7 +363,7 @@ export default function App() {
           <div className="flex flex-wrap justify-center gap-4">
             <a
               id="main-download-btn"
-              href={downloadUrl}
+              href="https://drive.google.com/drive/folders/1wZG0nqu64KsJoBZaMsAITPYd88iF-NJt?usp=sharing"
               target="_blank"
               rel="noreferrer"
               className="cta-link cta-solid btn-download px-10 py-4 rounded-xl text-base font-semibold"
@@ -412,10 +402,10 @@ export default function App() {
           <div className="flex flex-col items-center md:items-end gap-2 text-sm text-gray-400">
             <span className="font-medium text-gray-300">Thông tin liên hệ:</span>
             <div className="flex flex-col md:flex-row gap-4 items-center md:items-end">
-              <a href="mailto:namqhong@gmail.com" className="hover:text-white transition-colors duration-200 flex items-center gap-1.5">
+              <a href="mailto:namqhong@gmail.com" className="footer-contact-link hover:text-white transition-colors duration-200 flex items-center gap-1.5">
                 <span className="opacity-70">✉</span> namqhong@gmail.com
               </a>
-              <a href="https://t.me/namhnz" target="_blank" rel="noreferrer" className="hover:text-white transition-colors duration-200 flex items-center gap-1.5">
+              <a href="https://t.me/namhnz" target="_blank" rel="noreferrer" className="footer-contact-link hover:text-white transition-colors duration-200 flex items-center gap-1.5">
                 <span className="opacity-70">✈</span> @namhnz
               </a>
             </div>
