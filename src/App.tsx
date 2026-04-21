@@ -144,7 +144,7 @@ export default function App() {
             <a
               href="#download"
               id="nav-download-btn"
-              className="bg-white text-black px-6 py-2 rounded-lg text-sm font-medium hover:bg-gray-100 transition-colors duration-200"
+              className="cta-link cta-solid bg-white text-black px-6 py-2 rounded-lg text-sm font-medium hover:bg-gray-100 transition-colors duration-200"
             >
               Tải Xuống Ngay
             </a>
@@ -175,14 +175,14 @@ export default function App() {
                   <a
                     href="#download"
                     id="hero-download-btn"
-                    className="bg-white text-black px-8 py-3 rounded-lg font-medium hover:bg-gray-100 transition-colors duration-200"
+                    className="cta-link cta-solid bg-white text-black px-8 py-3 rounded-lg font-medium hover:bg-gray-100 transition-colors duration-200"
                   >
                     Tải Xuống Miễn Phí
                   </a>
                   <a
                     href="#features"
                     id="hero-explore-btn"
-                    className="liquid-glass border border-white/20 text-white px-8 py-3 rounded-lg font-medium hover:bg-white hover:text-black transition-all duration-200"
+                    className="cta-link cta-ghost liquid-glass border border-white/20 text-white px-8 py-3 rounded-lg font-medium hover:bg-white hover:text-black transition-all duration-200"
                   >
                     Khám Phá Tính Năng
                   </a>
@@ -376,14 +376,14 @@ export default function App() {
               href={downloadUrl}
               target="_blank"
               rel="noreferrer"
-              className="btn-download px-10 py-4 rounded-xl text-base font-semibold"
+              className="cta-link cta-solid btn-download px-10 py-4 rounded-xl text-base font-semibold"
             >
               ⬇&nbsp;&nbsp;Tải về cho Windows (v{latestVersion})
             </a>
             <a
               id="github-link"
               href="#"
-              className="liquid-glass border border-white/20 text-white px-10 py-4 rounded-xl text-base font-medium hover:bg-white hover:text-black transition-all duration-200"
+              className="cta-link cta-ghost liquid-glass border border-white/20 text-white px-10 py-4 rounded-xl text-base font-medium hover:bg-white hover:text-black transition-all duration-200"
             >
               Mã nguồn GitHub
             </a>

@@ -15,6 +15,33 @@
 }
 
 @layer components {
+  .cta-link {
+    text-decoration: none;
+  }
+
+  .cta-link:visited {
+    text-decoration: none;
+  }
+
+  .cta-solid,
+  .cta-solid:visited {
+    color: #000;
+  }
+
+  .cta-ghost,
+  .cta-ghost:visited {
+    color: #fff;
+  }
+
+  .cta-link:focus-visible {
+    outline: 2px solid rgba(255, 255, 255, 0.8);
+    outline-offset: 2px;
+  }
+
+  .cta-solid:focus-visible {
+    outline-color: rgba(0, 0, 0, 0.8);
+  }
+
   /* ── Liquid Glass ── */
   .liquid-glass {
     background: rgba(0, 0, 0, 0.4);
@@ -103,6 +130,16 @@
     border: 1px solid rgba(255, 255, 255, 0.1);
     overflow: hidden;
     box-shadow: 0 32px 80px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255,255,255,0.05);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .cta-solid:hover {
+    color: #000;
+  }
+
+  .cta-ghost:hover {
+    color: #000;
   }
 }
 
