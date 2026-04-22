@@ -4,7 +4,7 @@ import FadeIn from './components/FadeIn'
 import './index.css'
 
 const VERSION_MANIFEST_URL = '/app-version.json'
-const FALLBACK_VERSION = '1.1.6'
+const FALLBACK_VERSION = '1.1.7'
 
 // ── Feature data ──────────────────────────────────────────────────────────────
 const features = [
@@ -165,7 +165,7 @@ export default function App() {
                   <a
                     href="#download"
                     id="hero-download-btn"
-                    className="cta-link cta-solid bg-white text-black px-8 py-3 rounded-lg font-medium hover:bg-gray-100 transition-colors duration-200"
+                    className="cta-link cta-solid btn-high-contrast px-8 py-3 rounded-lg font-medium transition-colors duration-200"
                   >
                     Tải Xuống Miễn Phí
                   </a>
@@ -299,7 +299,7 @@ export default function App() {
                     <div className="bg-white/5 border border-white/10 rounded-lg px-4 py-1.5 text-xs text-gray-400">
                       Chọn Tệp
                     </div>
-                    <div className="bg-white text-black rounded-lg px-4 py-1.5 text-xs font-medium">
+                    <div className="btn-high-contrast rounded-lg px-4 py-1.5 text-xs font-medium">
                       Bắt Đầu Chuyển Đổi
                     </div>
                   </div>
