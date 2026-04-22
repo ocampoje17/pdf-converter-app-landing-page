@@ -134,7 +134,7 @@ export default function App() {
             <a
               href="#download"
               id="nav-download-btn"
-              className="cta-link cta-solid bg-white text-black px-6 py-2 rounded-lg text-sm font-medium hover:bg-gray-100 transition-colors duration-200"
+              className="cta-link cta-solid btn-high-contrast-nav px-6 py-2 rounded-lg text-sm font-medium transition-colors duration-200"
             >
               Tải Xuống Ngay
             </a>
@@ -156,7 +156,7 @@ export default function App() {
 
               <FadeIn delay={800} duration={1000} className="mb-5">
                 <p className="text-base md:text-lg text-gray-300">
-                  Phần mềm chuyển đổi ảnh và PDF thành văn bản. Sở hữu sức mạnh thông minh ẩn sau giao diện tối giản. 100% offline, miễn phí trọn đời.
+                  Phần mềm chuyển đổi ảnh và PDF thành văn bản. App native Windows chạy nhanh, nhẹ, mở là dùng ngay. 100% offline, miễn phí trọn đời.
                 </p>
               </FadeIn>
 
@@ -357,7 +357,7 @@ export default function App() {
             Sẵn sàng để chuyển đổi?
           </h2>
           <p className="text-lg text-gray-400 mb-10">
-            Ứng dụng có sẵn cho Windows 10 &amp; 11. Hoàn toàn miễn phí.
+            Ứng dụng native cho Windows 10 &amp; 11, tối ưu để chạy nhanh và nhẹ. Hoàn toàn miễn phí.
           </p>
 
           <div className="flex flex-wrap justify-center gap-4">
