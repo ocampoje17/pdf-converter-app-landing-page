@@ -32,6 +32,12 @@ const stats = [
   { value: '∞', label: 'Không giới hạn tệp' },
 ]
 
+const screenshots = [
+  { src: '/screenshots/screenshot-1.jpg', alt: 'Màn hình chuyển đổi tài liệu' },
+  { src: '/screenshots/screenshot-2.jpg', alt: 'Màn hình kết quả OCR' },
+  { src: '/screenshots/screenshot-3.jpg', alt: 'Màn hình cấu hình ứng dụng' },
+]
+
 // ── Scroll reveal hook ────────────────────────────────────────────────────────
 function useScrollReveal() {
   useEffect(() => {
@@ -306,6 +312,50 @@ export default function App() {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="demo" className="section-darker py-24 px-6 md:px-12">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-14 reveal">
+            <p className="text-xs font-medium tracking-widest text-gray-500 uppercase mb-3">
+              Demo thực tế
+            </p>
+            <h2
+              className="text-3xl md:text-5xl font-normal text-white"
+              style={{ letterSpacing: '-0.03em' }}
+            >
+              Video và screenshot ứng dụng
+            </h2>
+          </div>
+
+          <div className="reveal mb-10">
+            <div className="screenshot-frame bg-black/50">
+              <div className="w-full" style={{ aspectRatio: '16 / 9' }}>
+                <iframe
+                  title="Video demo PDF Converter"
+                  src="https://www.youtube.com/embed/Na1aTpeYoEA"
+                  className="h-full w-full"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  allowFullScreen
+                />
+              </div>
+            </div>
+          </div>
+
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {screenshots.map((shot) => (
+              <div key={shot.src} className="feature-card overflow-hidden reveal">
+                <img
+                  src={shot.src}
+                  alt={shot.alt}
+                  loading="lazy"
+                  className="h-full w-full object-cover"
+                />
+              </div>
+            ))}
           </div>
         </div>
       </section>
