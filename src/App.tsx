@@ -61,6 +61,7 @@ export default function App() {
   useScrollReveal()
   const videoRef = useRef<HTMLVideoElement>(null)
   const [latestVersion, setLatestVersion] = useState(FALLBACK_VERSION)
+  const [selectedScreenshot, setSelectedScreenshot] = useState<(typeof screenshots)[number] | null>(null)
 
   useEffect(() => {
     const controller = new AbortController()
@@ -92,6 +93,28 @@ export default function App() {
     void loadVersionManifest()
     return () => controller.abort()
   }, [])
+
+  useEffect(() => {
+    if (!selectedScreenshot) {
+      return
+    }
+
+    const previousOverflow = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setSelectedScreenshot(null)
+      }
+    }
+
+    document.addEventListener('keydown', handleKeyDown)
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown)
+      document.body.style.overflow = previousOverflow
+    }
+  }, [selectedScreenshot])
 
   return (
     <div className="min-h-screen bg-black text-white">
@@ -348,17 +371,55 @@ export default function App() {
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {screenshots.map((shot) => (
               <div key={shot.src} className="feature-card overflow-hidden reveal">
-                <img
-                  src={shot.src}
-                  alt={shot.alt}
-                  loading="lazy"
-                  className="h-full w-full object-cover"
-                />
+                <button
+                  type="button"
+                  onClick={() => setSelectedScreenshot(shot)}
+                  className="group block h-full w-full cursor-zoom-in"
+                >
+                  <img
+                    src={shot.src}
+                    alt={shot.alt}
+                    loading="lazy"
+                    className="h-full w-full object-cover transition-transform duration-200 group-hover:scale-[1.02]"
+                  />
+                </button>
               </div>
             ))}
           </div>
         </div>
       </section>
+
+      {selectedScreenshot && (
+        <div
+          className="fixed inset-0 z-[120] bg-black/90 px-4 py-4 sm:px-8 sm:py-8"
+          onClick={() => setSelectedScreenshot(null)}
+          role="dialog"
+          aria-modal="true"
+          aria-label={selectedScreenshot.alt}
+        >
+          <button
+            type="button"
+            aria-label="Đóng xem ảnh"
+            onClick={() => setSelectedScreenshot(null)}
+            className="absolute right-4 top-4 z-[121] flex h-10 w-10 items-center justify-center rounded-full border border-white/30 bg-black/60 text-white transition-colors hover:bg-black/80"
+          >
+            <svg viewBox="0 0 24 24" className="h-5 w-5" aria-hidden="true">
+              <path d="M6 6L18 18M18 6L6 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+            </svg>
+          </button>
+
+          <div
+            className="mx-auto flex h-full w-full max-w-7xl items-center justify-center"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <img
+              src={selectedScreenshot.src}
+              alt={selectedScreenshot.alt}
+              className="max-h-full max-w-full object-contain"
+            />
+          </div>
+        </div>
+      )}
 
       {/* ══════════════════════════════════════════════════════════════
           PRIVACY SECTION
