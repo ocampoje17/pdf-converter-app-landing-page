@@ -237,70 +237,6 @@ export default function App() {
         </div>
       </section>
 
-      <section className="section-darker py-16 px-6 md:px-12">
-        <div className="max-w-6xl mx-auto reveal">
-          <div className="feature-card p-6 md:p-8 lg:p-10">
-            <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
-              <div className="max-w-2xl">
-                <p className="text-xs font-medium tracking-widest text-gray-500 uppercase mb-3">
-                  ĐƯỢC NHẮC ĐẾN
-                </p>
-                <h2
-                  className="text-2xl md:text-3xl lg:text-4xl font-normal text-white"
-                  style={{ letterSpacing: '-0.02em' }}
-                >
-                  Pdf Converter đang được giới thiệu trên các nền tảng launch của Việt Nam
-                </h2>
-              </div>
-
-              <div className="flex flex-wrap items-center justify-start gap-3 lg:justify-end">
-                <a
-                  href="https://unikorn.vn/p/pdf-converter-win-chi-windows?ref=embed-pdf-converter-win-chi-windows"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex"
-                >
-                  <picture>
-                    <source
-                      media="(prefers-color-scheme: dark)"
-                      srcSet="https://unikorn.vn/api/widgets/badge/pdf-converter-win-chi-windows?theme=dark"
-                    />
-                    <img
-                      src="https://unikorn.vn/api/widgets/badge/pdf-converter-win-chi-windows?theme=light"
-                      alt="PDF Converter Offline (chỉ Windows) trên Unikorn.vn"
-                      width="256"
-                      height="64"
-                      loading="lazy"
-                    />
-                  </picture>
-                </a>
-
-                <a
-                  href="https://launch.j2team.dev/products/pdf-converter-win-chi-windows?utm_source=badge-launched&utm_medium=badge&utm_campaign=badge-pdf-converter-win-chi-windows"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex"
-                >
-                  <picture>
-                    <source
-                      media="(prefers-color-scheme: dark)"
-                      srcSet="https://launch.j2team.dev/badge/pdf-converter-win-chi-windows/dark"
-                    />
-                    <img
-                      src="https://launch.j2team.dev/badge/pdf-converter-win-chi-windows/light"
-                      alt="PDF Converter Offline (chỉ Windows) - Launched on J2TEAM Launch"
-                      width="250"
-                      height="54"
-                      loading="lazy"
-                    />
-                  </picture>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* ══════════════════════════════════════════════════════════════
           FEATURES SECTION
       ══════════════════════════════════════════════════════════════ */}
@@ -513,6 +449,70 @@ export default function App() {
                 <div className="text-sm text-gray-500">{item.desc}</div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section-darker py-16 px-6 md:px-12">
+        <div className="max-w-6xl mx-auto reveal">
+          <div className="feature-card p-6 md:p-8 lg:p-10">
+            <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+              <div className="max-w-2xl">
+                <p className="text-xs font-medium tracking-widest text-gray-500 uppercase mb-3">
+                  ĐƯỢC NHẮC ĐẾN
+                </p>
+                <h2
+                  className="text-2xl md:text-3xl lg:text-4xl font-normal text-white"
+                  style={{ letterSpacing: '-0.02em' }}
+                >
+                  Pdf Converter đang được giới thiệu trên các nền tảng launch của Việt Nam
+                </h2>
+              </div>
+
+              <div className="flex flex-wrap items-center justify-start gap-3 lg:justify-end">
+                <a
+                  href="https://unikorn.vn/p/pdf-converter-win-chi-windows?ref=embed-pdf-converter-win-chi-windows"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex"
+                >
+                  <picture>
+                    <source
+                      media="(prefers-color-scheme: dark)"
+                      srcSet="https://unikorn.vn/api/widgets/badge/pdf-converter-win-chi-windows?theme=dark"
+                    />
+                    <img
+                      src="https://unikorn.vn/api/widgets/badge/pdf-converter-win-chi-windows?theme=light"
+                      alt="PDF Converter Offline (chỉ Windows) trên Unikorn.vn"
+                      width="256"
+                      height="64"
+                      loading="lazy"
+                    />
+                  </picture>
+                </a>
+
+                <a
+                  href="https://launch.j2team.dev/products/pdf-converter-win-chi-windows?utm_source=badge-launched&utm_medium=badge&utm_campaign=badge-pdf-converter-win-chi-windows"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex"
+                >
+                  <picture>
+                    <source
+                      media="(prefers-color-scheme: dark)"
+                      srcSet="https://launch.j2team.dev/badge/pdf-converter-win-chi-windows/dark"
+                    />
+                    <img
+                      src="https://launch.j2team.dev/badge/pdf-converter-win-chi-windows/light"
+                      alt="PDF Converter Offline (chỉ Windows) - Launched on J2TEAM Launch"
+                      width="250"
+                      height="54"
+                      loading="lazy"
+                    />
+                  </picture>
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </section>
