@@ -4,7 +4,7 @@ import FadeIn from './components/FadeIn'
 import './index.css'
 
 const VERSION_MANIFEST_URL = '/app-version.json'
-const FALLBACK_VERSION = '1.1.7'
+const FALLBACK_VERSION = '1.1.8'
 
 // ── Feature data ──────────────────────────────────────────────────────────────
 const features = [
