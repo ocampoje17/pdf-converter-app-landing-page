@@ -5,7 +5,7 @@ export type AnalyticsConsent = 'granted' | 'denied'
 
 declare global {
   interface Window {
-    dataLayer?: Array<IArguments | unknown[]>
+    dataLayer?: IArguments[]
     gtag?: (...args: unknown[]) => void
     __pdfConverterAnalyticsInitialized?: boolean
   }
@@ -38,12 +38,13 @@ export function initializeAnalytics(): void {
   window.dataLayer = window.dataLayer ?? []
 
   const gtag = window.gtag ?? function gtag(...args: unknown[]): void {
-    window.dataLayer?.push(args)
+    // Google gtag.js reads its command queue as native arguments objects.
+    // eslint-disable-next-line prefer-rest-params
+    window.dataLayer?.push(arguments)
+    void args
   }
 
   window.gtag = gtag
-  gtag('js', new Date())
-  gtag('config', MEASUREMENT_ID)
 
   const existingScript = document.querySelector<HTMLScriptElement>(
     'script[data-pdf-converter-analytics="true"]',
@@ -57,4 +58,7 @@ export function initializeAnalytics(): void {
   script.src = `https://www.googletagmanager.com/gtag/js?id=${MEASUREMENT_ID}`
   script.dataset.pdfConverterAnalytics = 'true'
   document.head.append(script)
+
+  gtag('js', new Date())
+  gtag('config', MEASUREMENT_ID)
 }
