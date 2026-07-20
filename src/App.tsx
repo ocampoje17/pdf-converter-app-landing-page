@@ -1,6 +1,13 @@
 import { useEffect, useRef, useState } from 'react'
+import AnalyticsConsentDialog from './components/AnalyticsConsentDialog'
 import AnimatedHeading from './components/AnimatedHeading'
 import FadeIn from './components/FadeIn'
+import {
+  initializeAnalytics,
+  readAnalyticsConsent,
+  saveAnalyticsConsent,
+  type AnalyticsConsent,
+} from './lib/analytics'
 import './index.css'
 
 const VERSION_MANIFEST_URL = '/app-version.json'
@@ -62,6 +69,18 @@ export default function App() {
   const videoRef = useRef<HTMLVideoElement>(null)
   const [latestVersion, setLatestVersion] = useState(FALLBACK_VERSION)
   const [selectedScreenshot, setSelectedScreenshot] = useState<(typeof screenshots)[number] | null>(null)
+  const [analyticsConsent, setAnalyticsConsent] = useState<AnalyticsConsent | null>(() => readAnalyticsConsent())
+
+  useEffect(() => {
+    if (analyticsConsent === 'granted') {
+      initializeAnalytics()
+    }
+  }, [analyticsConsent])
+
+  const handleAnalyticsConsentChoice = (consent: AnalyticsConsent) => {
+    saveAnalyticsConsent(consent)
+    setAnalyticsConsent(consent)
+  }
 
   useEffect(() => {
     const controller = new AbortController()
@@ -118,6 +137,9 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-black text-white">
+      {analyticsConsent === null && (
+        <AnalyticsConsentDialog onConsentChoice={handleAnalyticsConsentChoice} />
+      )}
       {/* ══════════════════════════════════════════════════════════════
           HERO SECTION
       ══════════════════════════════════════════════════════════════ */}
