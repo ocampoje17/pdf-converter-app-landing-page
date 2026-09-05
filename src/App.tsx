@@ -11,7 +11,7 @@ import {
 import './index.css'
 
 const VERSION_MANIFEST_URL = '/app-version.json'
-const FALLBACK_VERSION = '1.1.8'
+const FALLBACK_VERSION = '1.1.9'
 
 // ── Feature data ──────────────────────────────────────────────────────────────
 const features = [
