@@ -107,6 +107,89 @@
     border-color: rgba(255, 255, 255, 0.15);
   }
 
+  /* ── Changelog timeline ── */
+  .changelog-timeline {
+    --timeline-x: 6px;
+    position: relative;
+  }
+
+  .changelog-timeline::before {
+    content: '';
+    position: absolute;
+    top: 14px;
+    bottom: 0;
+    left: var(--timeline-x);
+    width: 1px;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.04));
+    pointer-events: none;
+  }
+
+  .changelog-entry {
+    position: relative;
+    display: grid;
+    gap: 1rem;
+    padding-left: 2rem;
+    padding-bottom: 2.5rem;
+  }
+
+  .changelog-entry:last-child {
+    padding-bottom: 0;
+  }
+
+  .changelog-dot {
+    position: absolute;
+    top: 9px;
+    left: calc(var(--timeline-x) - 5px);
+    width: 11px;
+    height: 11px;
+    border: 2px solid #050505;
+    border-radius: 50%;
+    background: #6b7280;
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.15);
+  }
+
+  .changelog-entry-latest .changelog-dot {
+    background: #fff;
+    box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.06), 0 0 20px rgba(255, 255, 255, 0.15);
+  }
+
+  .changelog-entry-latest .changelog-card {
+    border-color: rgba(255, 255, 255, 0.18);
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  @media (min-width: 768px) {
+    .changelog-timeline {
+      --timeline-x: 220px;
+    }
+
+    .changelog-entry {
+      grid-template-columns: 200px minmax(0, 1fr);
+      gap: 3rem;
+      padding-left: 0;
+    }
+
+    .changelog-meta {
+      padding-top: 1.75rem;
+    }
+
+    .changelog-dot {
+      top: 36px;
+    }
+
+    .changelog-timeline::before {
+      top: 41px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    #changelog .reveal {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+  }
+
   /* ── Glow accent ── */
   .glow-accent {
     box-shadow: 0 0 60px rgba(255, 255, 255, 0.06);

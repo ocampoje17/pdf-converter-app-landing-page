@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import AnalyticsConsentDialog from './components/AnalyticsConsentDialog'
 import AnimatedHeading from './components/AnimatedHeading'
+import Changelog from './components/Changelog'
 import FadeIn from './components/FadeIn'
 import {
   initializeAnalytics,
@@ -581,6 +582,8 @@ export default function App() {
           </p>
         </div>
       </section>
+
+      <Changelog />
 
       {/* ══════════════════════════════════════════════════════════════
           FOOTER & CONTACT
